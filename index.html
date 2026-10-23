@@ -1,69 +1,437 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Shakenya Jenkins</title>
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    body {
-      margin: 0;
-      background: #ffffff;
-      color: #000000;
-      font-family: Arial, Helvetica, sans-serif;
-      line-height: 1.6;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      min-height: 100vh;
-      padding: 48px 20px;
-    }
+<!-- EDIT: the title shown on the browser tab -->
+<title>FairPlay Rides | Rides to every practice, game, and tournament</title>
+<meta name="description" content="Safe, affordable rides for youth athletes to practices, games, and tournaments across Memphis. The price you’re quoted is the price you pay.">
 
-    main {
-      width: 100%;
-      max-width: 560px;
-      text-align: center;
-    }
+<style>
+/* OPTIONAL: use your real Sprite Graffiti font.
+   1. Put your font file (for example SpriteGraffiti.woff2) in this same folder.
+   2. Copy the block below OUTSIDE this comment and match the file name:
 
-    h1 {
-      font-size: 2.25rem;
-      line-height: 1.2;
-      margin: 0 0 12px;
-    }
+   @font-face {
+     font-family: "Sprite Graffiti";
+     src: url("SpriteGraffiti.woff2") format("woff2");
+     font-display: swap;
+   }
+*/
 
-    .city {
-      font-size: 1.125rem;
-      margin: 0 0 24px;
-    }
+/* COLORS: change a color once here and it updates everywhere */
+:root {
+  --blue: #434d57;      /* gray blue: main color */
+  --deep: #2f373f;      /* darker gray blue: dark sections */
+  --orange: #e98d31;    /* Game Day Orange: accents and buttons */
+  --gray: #90969a;      /* gray: secondary text */
+  --page: #e6e6e6;      /* light gray page background */
+  --card: #fefaf2;      /* light orange cream sections */
+  --ink: #1f262d;       /* text on orange buttons */
+}
 
-    .about {
-      font-size: 1.125rem;
-      margin: 0;
-    }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
-    @media (max-width: 480px) {
-      body {
-        padding: 32px 16px;
-      }
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--blue);
+  font-family: "Trebuchet MS", Verdana, sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
 
-      h1 {
-        font-size: 1.875rem;
-      }
-    }
-  </style>
+/* Headings use Sprite Graffiti if you added it, otherwise a bold fallback */
+h1, h2, h3, .logo {
+  font-family: "Sprite Graffiti", "Trebuchet MS", Verdana, sans-serif;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin: 0;
+}
+h2 { font-size: clamp(1.6rem, 4.5vw, 2.3rem); margin-bottom: 14px; }
+h3 { font-size: 1.15rem; margin-bottom: 4px; }
+p { margin: 0 0 14px; max-width: 62ch; }
+a { color: inherit; }
+a:focus-visible, button:focus-visible, summary:focus-visible {
+  outline: 3px solid var(--orange);
+  outline-offset: 3px;
+}
+
+.wrap { max-width: 980px; margin: 0 auto; padding: 0 20px; }
+section { padding: 56px 0; }
+
+/* BUTTONS */
+.btn {
+  display: inline-block;
+  padding: 15px 28px;
+  border-radius: 999px;
+  font-weight: bold;
+  font-size: 1rem;
+  text-decoration: none;
+  text-align: center;
+}
+.btn-orange { background: var(--orange); color: var(--ink); }
+.btn-outline { border: 2px solid currentColor; }
+.btn-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
+
+/* HEADER */
+.site-header {
+  position: sticky; top: 0; z-index: 10;
+  background: var(--deep); color: #fff;
+}
+.site-header .wrap {
+  display: flex; align-items: center; justify-content: space-between;
+  min-height: 64px;
+}
+.logo { font-size: 1.5rem; text-decoration: none; letter-spacing: -0.04em; }
+.logo span { color: var(--orange); text-shadow: -2px 2px 0 var(--gray); }
+.menu-btn {
+  background: none; border: 2px solid rgba(255,255,255,.5); color: #fff;
+  border-radius: 8px; padding: 8px 12px; font: inherit; font-size: .95rem; cursor: pointer;
+}
+#nav {
+  display: none;
+  position: absolute; top: 64px; left: 0; right: 0;
+  background: var(--deep); padding: 8px 20px 20px;
+  flex-direction: column; gap: 2px;
+}
+#nav.open { display: flex; }
+#nav a { text-decoration: none; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,.12); }
+#nav a.btn { margin-top: 12px; border: 0; }
+@media (min-width: 860px) {
+  .menu-btn { display: none; }
+  #nav { display: flex; position: static; flex-direction: row; align-items: center; gap: 22px; padding: 0; background: none; }
+  #nav a { padding: 0; border: 0; font-size: .95rem; }
+  #nav a.btn { margin: 0; padding: 10px 20px; }
+}
+
+/* HERO */
+.hero {
+  position: relative; overflow: hidden;
+  background: linear-gradient(135deg, var(--blue) 0%, var(--deep) 100%);
+  color: #fff;
+  padding: 64px 0 112px;
+}
+.hero:after {
+  content: ""; position: absolute; left: -10%; right: -10%; bottom: 0;
+  height: 40px; background: var(--orange);
+  transform: skewY(-2deg); transform-origin: left bottom;
+}
+.hero h1 { font-size: clamp(2.2rem, 8vw, 4rem); max-width: 13em; margin-bottom: 18px; }
+.hero .sub { font-size: 1.15rem; max-width: 34em; margin-bottom: 26px; }
+.hero .help { font-size: .95rem; margin: 18px 0 0; }
+
+/* TRUST STRIP */
+.trust { background: var(--card); padding: 32px 0; }
+.trust .wrap { display: grid; gap: 22px; }
+.trust p { margin: 0; font-size: .97rem; }
+@media (min-width: 760px) {
+  .trust .wrap { grid-template-columns: repeat(3, 1fr); gap: 0; }
+  .trust .wrap > div { padding: 0 24px; border-left: 3px solid var(--orange); }
+  .trust .wrap > div:first-child { padding-left: 0; border-left: 0; }
+}
+
+/* HOW IT WORKS */
+.steps { list-style: none; padding: 0; margin: 22px 0 30px; display: grid; gap: 16px; counter-reset: s; }
+.steps li { counter-increment: s; padding-left: 52px; position: relative; }
+.steps li:before {
+  content: counter(s);
+  position: absolute; left: 0; top: 0;
+  width: 38px; height: 38px; border-radius: 50%;
+  background: var(--blue); color: #fff; font-weight: bold;
+  display: flex; align-items: center; justify-content: center;
+}
+.steps b { display: block; }
+@media (min-width: 760px) { .steps { grid-template-columns: repeat(3, 1fr); gap: 28px; } }
+.serve { border-left: 5px solid var(--orange); padding-left: 18px; }
+
+/* FARE BOARD (pricing) */
+.fares { background: var(--deep); color: #fff; }
+.fares h2 { color: #fff; }
+.board { overflow-x: auto; margin: 22px 0 10px; }
+table { width: 100%; min-width: 560px; border-collapse: collapse; }
+th, td { text-align: left; padding: 14px 12px; border-bottom: 1px solid rgba(255,255,255,.18); }
+th { font-weight: normal; color: #c9ced2; font-size: .9rem; }
+td.price { color: var(--orange); font-size: 1.5rem; font-family: "Sprite Graffiti", "Trebuchet MS", Verdana, sans-serif; }
+.fares ul { padding-left: 20px; margin: 18px 0; max-width: 62ch; }
+.fares li { margin-bottom: 6px; }
+.example { background: rgba(255,255,255,.08); border-radius: 12px; padding: 14px 18px; max-width: 62ch; }
+
+/* SAFETY */
+.safety { background: var(--card); }
+.checks { list-style: none; padding: 0; margin: 18px 0 24px; display: grid; gap: 10px; max-width: 62ch; }
+.checks li { padding-left: 34px; position: relative; }
+.checks li:before {
+  content: ""; position: absolute; left: 4px; top: .35em;
+  width: 8px; height: 15px; border: solid var(--orange); border-width: 0 4px 4px 0;
+  transform: rotate(40deg);
+}
+
+/* TEAMS AND SPONSORS */
+.teams { background: var(--blue); color: #fff; }
+.teams h2 { color: #fff; }
+
+/* ABOUT */
+.about .wrap { display: grid; gap: 26px; align-items: center; }
+.photo {
+  width: 160px; height: 160px; border-radius: 50%; object-fit: cover;
+  border: 5px solid var(--orange); display: flex; align-items: center; justify-content: center;
+  background: var(--gray); color: #fff; font-size: 2.6rem; font-weight: bold; letter-spacing: 2px;
+}
+.promise { font-weight: bold; }
+@media (min-width: 760px) { .about .wrap { grid-template-columns: 180px 1fr; gap: 40px; } }
+
+/* FAQ */
+.faq { background: var(--card); }
+details { border-bottom: 1px solid #ddd2bd; padding: 14px 0; max-width: 70ch; }
+summary { cursor: pointer; font-weight: bold; }
+details p { margin: 10px 0 0; }
+
+/* FINAL CALL TO ACTION AND FOOTER */
+.final { background: var(--orange); color: var(--ink); text-align: center; }
+.final p { margin: 0 auto 18px; }
+.final .btn-row { justify-content: center; }
+.final .btn-orange { background: var(--ink); color: #fff; }
+.final .btn-outline { color: var(--ink); }
+footer { background: var(--deep); color: #dfe3e6; padding: 36px 0 90px; font-size: .95rem; }
+footer .wrap { display: grid; gap: 22px; }
+footer p { margin: 0 0 4px; }
+footer ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 8px 18px; }
+@media (min-width: 760px) { footer .wrap { grid-template-columns: 1.4fr 1fr; } footer { padding-bottom: 36px; } }
+
+/* STICKY "BOOK A RIDE" BAR (phones only) */
+.bar { display: none; }
+@media (max-width: 759px) {
+  .bar {
+    display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 9;
+    background: var(--deep); padding: 12px 16px calc(12px + env(safe-area-inset-bottom, 0px));
+  }
+  .bar a { display: block; }
+  .btn-row .btn { width: 100%; }
+}
+</style>
 </head>
+
 <body>
-  <main>
-    <h1>Shakenya Jenkins</h1>
-    <p class="city">Memphis, TN</p>
-    <p class="about">
-      Hi, I'm Shakenya! I have a background in customer service and digital skills work.
-     I love helping people solve problems, create memories, and have fun. I'm learning Google workspace, web page setup and AI partner platforms
-      to start my own side hustle.
-    </p>
-  </main>
+
+<!-- ============ HEADER ============ -->
+<!-- EDIT: every "Book a Ride" button points to #contact for now.
+     WHEN your Jotform is ready: search this file for  href="#contact"  on the
+     Book a Ride buttons and replace it with your Jotform link. -->
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="#top">Fair<span>P</span>lay Rides</a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav id="nav" aria-label="Main">
+      <a href="#how">How It Works</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#safety">Safety and Trust</a>
+      <a href="#teams">Teams and Sponsors</a>
+      <a href="#faq">FAQ</a>
+      <a href="#about">About</a>
+      <a class="btn btn-orange" href="#contact">Book a Ride</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap">
+    <h1>Every kid in the game. We’ll handle the ride.</h1>
+    <p class="sub">Safe, affordable rides to practices, games, and tournaments across Memphis. The price you’re quoted is the price you pay.</p>
+    <div class="btn-row">
+      <a class="btn btn-orange" href="#contact">Book a Ride</a>
+      <!-- EDIT: point this at your Request a Quote form when it is ready -->
+      <a class="btn btn-outline" href="#teams">Sponsor Rides for Your Team</a>
+    </div>
+    <!-- EDIT: phone number appears twice. Change the tel: link AND the visible text. -->
+    <p class="help">Questions? Call or text <a href="tel:+19014602043">901-460-2043</a>.</p>
+  </div>
+</section>
+
+<!-- ============ TRUST POINTS ============ -->
+<div class="trust">
+  <div class="wrap">
+    <div>
+      <h3>Final price, no surprises</h3>
+      <p>The fare we quote when you book is what you pay.</p>
+    </div>
+    <div>
+      <h3>15 free minutes of waiting</h3>
+      <p>Practice ran long? The first 15 minutes are on us.</p>
+    </div>
+    <div>
+      <!-- ONLY KEEP this point once backup drivers and roadside help are in place -->
+      <h3>A backup plan for every ride</h3>
+      <p>Backup drivers and roadside help mean no team gets stranded.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section id="how">
+  <div class="wrap">
+    <h2>Getting there takes three steps</h2>
+    <ol class="steps">
+      <li><b>Book</b>Tell us the athlete, pickup and drop-off, and the date and time.</li>
+      <li><b>Get confirmed</b>We confirm your ride and send you the details.</li>
+      <li><b>Ride</b>Your athlete gets to practice or the game, and you know they arrived.</li>
+    </ol>
+    <div class="serve">
+      <h3>Built around game-day schedules</h3>
+      <p>We drive athletes to youth rec leagues (football, basketball, soccer), school and travel teams, weekend tournaments, and training sessions. Evenings and weekends are our focus, because that’s when your athlete needs to be somewhere.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRICING ============ -->
+<section class="fares" id="pricing">
+  <div class="wrap">
+    <h2>Simple flat fares, by distance</h2>
+    <p>One-way prices. Rides start at $15.</p>
+    <div class="board">
+      <table>
+        <tr><th>Distance</th><th>First athlete</th><th>Each sibling added</th><th>Team carpool, per athlete (3 or more)</th></tr>
+        <tr><td>Local, up to 5 miles</td><td class="price">$15</td><td class="price">+$4</td><td class="price">$7</td></tr>
+        <tr><td>Metro, 5 to 10 miles</td><td class="price">$24</td><td class="price">+$5</td><td class="price">$10</td></tr>
+        <tr><td>Extended, 10 to 15 miles</td><td class="price">$35</td><td class="price">+$6</td><td class="price">$14</td></tr>
+        <tr><td>Over 15 miles or out of town</td><td colspan="3">Custom quote</td></tr>
+      </table>
+    </div>
+    <ul>
+      <li>Waiting: the first 15 minutes are free, then $6 per 15 minutes.</li>
+      <li>10-ride pack: 10% off.</li>
+      <li>Event-day charter for coaches and leagues: $38 per hour, 3-hour minimum.</li>
+      <li>Cancel free up to 2 hours before pickup. After that, $5.</li>
+    </ul>
+    <p class="example">Example: two siblings, 8 miles. $24 + $5 = <b>$29 one way.</b></p>
+  </div>
+</section>
+
+<!-- ============ SAFETY AND TRUST ============ -->
+<!-- IMPORTANT: only keep each line below once it is actually in place at launch.
+     Your car insurance for paid rides and driver checks must be done first. -->
+<section class="safety" id="safety">
+  <div class="wrap">
+    <h2>Your athlete’s safety comes first</h2>
+    <ul class="checks">
+      <li>Background and driving-record checks for every driver</li>
+      <li>Insurance for paid rides</li>
+      <li>A parent permission form for every athlete</li>
+      <li>Booster and car seats available when needed</li>
+      <li>Backup drivers, roadside help, and a refund-or-credit promise if something goes wrong</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ TEAMS AND SPONSORS ============ -->
+<section class="teams" id="teams">
+  <div class="wrap">
+    <h2>Don’t let cost keep a kid home</h2>
+    <p>Coaches, leagues, and sponsors can prepay rides so every athlete on the roster can show up. Choose team carpool rates for practices and games, or book an event-day charter for tournaments.</p>
+    <div class="btn-row">
+      <!-- EDIT: replace #contact with your Request a Quote form link when ready -->
+      <a class="btn btn-orange" href="#contact">Request a Quote</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="about" id="about">
+  <div class="wrap">
+    <!-- WHEN your photo is ready: delete the placeholder <div> below and put this line in its place
+         (change the file name if yours differs):
+         <img class="photo" src="photo.jpg" alt="Photo of Shakenya Jenkins, owner of FairPlay Rides"> -->
+    <div class="photo" role="img" aria-label="Placeholder for Shakenya Jenkins photo">SJ</div>
+    <div>
+      <h2>Hi, I’m Shakenya</h2>
+      <p>I spent years in customer service, including handling escalated calls as a consumer advocate. That taught me to communicate clearly, stay calm when plans change, and treat every family the way I’d want to be treated. I started FairPlay Rides so getting to the game never depends on gas money or a tight schedule.</p>
+      <p class="promise">My promise: you’ll always know who’s driving, when they’re coming, and when your athlete arrives.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="faq" id="faq">
+  <div class="wrap">
+    <h2>Quick answers</h2>
+    <details>
+      <summary>What if you’re late, or practice runs over?</summary>
+      <p>We’ll keep you updated. Waiting time is free for the first 15 minutes, then $6 per 15 minutes.</p>
+    </details>
+    <details>
+      <summary>Can I cancel?</summary>
+      <p>Yes. Cancel free up to 2 hours before pickup. After that, it’s $5.</p>
+    </details>
+    <details>
+      <summary>Can siblings or a whole team ride together?</summary>
+      <p>Yes. Siblings are a small add-on, and teams of 3 or more get a lower per-athlete rate.</p>
+    </details>
+    <details>
+      <summary>What ages do you drive?</summary>
+      <p>Athletes of all ages. Younger riders can use booster or car seats, and every athlete needs a parent permission form.</p>
+    </details>
+  </div>
+</section>
+
+<!-- ============ FINAL CALL TO ACTION ============ -->
+<section class="final">
+  <div class="wrap">
+    <h2>Ready for game day?</h2>
+    <p>Book your first ride in a couple of minutes.</p>
+    <div class="btn-row">
+      <a class="btn btn-orange" href="#contact">Book a Ride</a>
+      <a class="btn btn-outline" href="#teams">Sponsor Rides for Your Team</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer id="contact">
+  <div class="wrap">
+    <div>
+      <p><b>FairPlay Rides</b></p>
+      <p>Youth athlete rides, Memphis, TN</p>
+      <!-- EDIT: phone appears twice (tel: link AND visible text); email appears twice (mailto: link AND visible text) -->
+      <p>Call or text: <a href="tel:+19014602043">+1 901-460-2043</a></p>
+      <p>Email: <a href="mailto:shakenyajenkins@gmail.com">shakenyajenkins@gmail.com</a></p>
+      <!-- EDIT: confirm your service area -->
+      <p>Serving Memphis and nearby areas</p>
+    </div>
+    <ul>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#safety">Safety and Trust</a></li>
+      <li><a href="#teams">Teams and Sponsors</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+  </div>
+</footer>
+
+<!-- STICKY BAR (phones) -->
+<div class="bar"><a class="btn btn-orange" href="#contact">Book a Ride</a></div>
+
+<script>
+/* Opens and closes the menu on phones */
+var btn = document.querySelector(".menu-btn");
+var nav = document.getElementById("nav");
+btn.addEventListener("click", function () {
+  var open = nav.classList.toggle("open");
+  btn.setAttribute("aria-expanded", open);
+});
+nav.addEventListener("click", function (e) {
+  if (e.target.tagName === "A") {
+    nav.classList.remove("open");
+    btn.setAttribute("aria-expanded", "false");
+  }
+});
+</script>
 </body>
 </html>

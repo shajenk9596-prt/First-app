@@ -88,6 +88,7 @@ section { padding: 56px 0; }
 }
 .logo { font-size: 1.5rem; text-decoration: none; letter-spacing: -0.04em; }
 .logo span { color: var(--orange); text-shadow: -2px 2px 0 var(--gray); }
+.logo img { display: block; width: 58px; height: 54px; object-fit: contain; }
 .menu-btn {
   background: none; border: 2px solid rgba(255,255,255,.5); color: #fff;
   border-radius: 8px; padding: 8px 12px; font: inherit; font-size: .95rem; cursor: pointer;
@@ -223,7 +224,9 @@ footer ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: w
      Book a Ride buttons and replace it with your Jotform link. -->
 <header class="site-header">
   <div class="wrap">
-    <a class="logo" href="#top">Fair<span>P</span>lay Rides</a>
+    <a class="logo" href="#top" aria-label="FairPlay Rides home">
+      <img src="logo.png" alt="FairPlay Rides">
+    </a>
     <button class="menu-btn" aria-expanded="false" aria-controls="nav">Menu</button>
     <nav id="nav" aria-label="Main">
       <a href="#how">How It Works</a>
@@ -344,10 +347,7 @@ footer ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: w
 <!-- ============ ABOUT ============ -->
 <section class="about" id="about">
   <div class="wrap">
-    <!-- WHEN your photo is ready: delete the placeholder <div> below and put this line in its place
-         (change the file name if yours differs):
-         <img class="photo" src="photo.jpg" alt="Photo of Shakenya Jenkins, owner of FairPlay Rides"> -->
-    <div class="photo" role="img" aria-label="Placeholder for Shakenya Jenkins photo">SJ</div>
+    <img class="photo" src="photo.jpg.png" alt="Photo of Shakenya Jenkins, owner of FairPlay Rides">
     <div>
       <h2>Hi, I’m Shakenya</h2>
       <p>I spent years in customer service, including handling escalated calls as a consumer advocate. That taught me to communicate clearly, stay calm when plans change, and treat every family the way I’d want to be treated. I started FairPlay Rides so getting to the game never depends on gas money or a tight schedule.</p>

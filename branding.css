@@ -9,7 +9,7 @@
 :root {
   /* EDIT: how strong the background silhouette is.
      0.05 = barely there, 0.08 = soft (recommended), 0.15 = bold */
-  --silhouette-strength: 0.08;
+  --silhouette-strength: 0.15;
 }
 
 /* ---------- 1. BACKGROUND SILHOUETTE (3logo.png) ----------

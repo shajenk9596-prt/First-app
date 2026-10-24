@@ -10,26 +10,34 @@
 <link rel="stylesheet" href="branding.css">
 </head>
 <body>
-<!-- MENU: same menu on every page. Change a label (the words) or a link (the file name) here. -->
+<!-- ============ HEADER ============ -->
+<!-- EDIT: every "Book a Ride" button points to #contact for now.
+     WHEN your Jotform is ready: search this file for  href="#contact"  on the
+     Book a Ride buttons and replace it with your Jotform link. -->
 <header class="site-header">
   <div class="wrap">
-    <a class="logo" href="index.html">Fair<span>P</span>lay Rides</a>
+    <a class="logo" href="#top" aria-label="FairPlay Rides home">
+      <img src="2logo.png" alt="FairPlay Rides">
+    </a>
     <button class="menu-btn" aria-expanded="false" aria-controls="nav">Menu</button>
     <nav id="nav" aria-label="Main">
-      <a href="index.html">Home</a>
-      <a href="about.html" aria-current="page">About</a>
-      <a href="fairplay-rides.html">FairPlay Rides</a>
-      <a href="contact.html">Contact</a>
-      <a class="btn btn-orange" href="contact.html">Book a Ride</a>
+      <a href="#how">How It Works</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#safety">Safety and Trust</a>
+      <a href="#teams">Teams and Sponsors</a>
+      <a href="#faq">FAQ</a>
+      <a href="#about">About</a>
+      <a class="btn btn-orange" href="#contact">Book a Ride</a>
     </nav>
   </div>
 </header>
+
 
 <main>
 <section class="hero small">
   <div class="wrap">
     <h1>About FairPlay Rides</h1>
-    <p class="sub lead">A mom’s answer to the ride problem every sports family knows.</p>
+    <p class="sub lead">An answer to the ride problem every sports family knows.</p>
   </div>
 </section>
 

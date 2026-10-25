@@ -1,64 +1,21 @@
 /* ==========================================================
-   BRANDING.CSS  (logo and background silhouette)
-   Put this file in the same folder as your pages, next to
-   styles.css, 2logo.png and 3logo.png.
-   Each page needs this line in its <head>, AFTER styles.css:
-   <link rel="stylesheet" href="branding.css">
+   BRANDING.CSS  (background silhouette from 3logo.png)
+   Put 3logo.png in the same folder. Every page links this file.
    ========================================================== */
-
 :root {
-  /* EDIT: how strong the background silhouette is.
-     0.05 = barely there, 0.08 = soft (recommended), 0.15 = bold */
-  --silhouette-strength: 0.11;
+  /* EDIT: how strong the silhouette is. 0.05 = faint, 0.08 = soft, 0.15 = bold */
+  --silhouette-strength: 0.08;
 }
-
-/* ---------- 1. BACKGROUND SILHOUETTE (3logo.png) ----------
-   One big faint copy of the van, stopwatch, and sports balls sits
-   behind the page content on EVERY page that links this file. It stays
-   in place while the page scrolls, and clicks pass right through it.
-   It is turned gray and blended into the page so it reads like a
-   silhouette, not a picture. */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   z-index: 50;
-  pointer-events: none;
+  pointer-events: none;                 /* clicks pass right through */
   background: url("3logo.png") center / min(96vw, 1000px) auto no-repeat;
   filter: grayscale(1);
-  mix-blend-mode: multiply;     /* the picture's cream background disappears */
+  mix-blend-mode: multiply;             /* the picture's cream background disappears */
   opacity: var(--silhouette-strength);
 }
-
-/* On phones, make the silhouette a little larger so it still shows */
-@media (max-width: 759px) {
-  body::before { background-size: 150vw auto; }
-}
-
-/* Printing: no silhouette */
-@media print {
-  body::before { display: none; }
-}
-
-/* ---------- 2. HOMEPAGE LOGO (2logo.png) ----------
-   The logo image has a cream background, so it sits on a rounded
-   cream plate that looks good on the dark blue hero. */
-.hero-grid { display: grid; gap: 28px; align-items: center; }
-.hero-grid .logo-plate { order: -1; }          /* logo first on phones */
-.logo-plate {
-  background: var(--card);
-  border-radius: 20px;
-  border-top: 8px solid var(--orange);
-  padding: 10px 14px;
-  max-width: 340px;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, .25);
-}
-.logo-plate img {
-  display: block;
-  width: 100%;
-  height: auto;          /* keeps the logo's shape, no stretching */
-}
-@media (min-width: 860px) {
-  .hero-grid { grid-template-columns: 1.15fr 1fr; gap: 48px; }
-  .hero-grid .logo-plate { order: 0; max-width: 440px; justify-self: end; }
-}
+@media (max-width: 759px) { body::before { background-size: 150vw auto; } }
+@media print { body::before { display: none; } }

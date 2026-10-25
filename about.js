@@ -1,4 +1,4 @@
-/* About page scroll animations and moving van */
+/* ABOUT.JS: slide-in paragraphs, highlighter sweep, and the moving van */
 (function () {
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 

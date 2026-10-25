@@ -83,60 +83,6 @@ section { padding: 56px 0; }
 .btn-outline { border: 2px solid currentColor; }
 .btn-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
 
-/* HEADER */
-
-<!-- EDIT: every "Book a Ride" button points to #contact for now.
-     WHEN your Jotform is ready: search this file for  href="#contact"  on the
-     Book a Ride buttons and replace it with your Jotform link. -->
-<header class="site-header">
-  <div class="wrap">
-    <a class="logo" href="#top">Fair<span>P</span>lay Rides</a>
-    <button class="menu-btn" aria-expanded="false" aria-controls="nav">Menu</button>
-    <nav id="nav" aria-label="Main">
-      <!-- MENU: each link opens its own page. Keep the same menu on every page you build.
-           EDIT: change a label (the words) or a link (the file name) here. -->
-      <a href="index.html" aria-current="page">Home</a>
-      <a href="about.html">About</a>
-      <a href="fairplay-rides.html">FairPlay Rides</a>
-      <a href="contact.html">Contact</a>
-      <a class="btn btn-orange" href="#contact">Book a Ride</a>
-    </nav>
-  </div>
-</header>
- 
-<main id="top">
-
-.site-header {
-  position: sticky; top: 0; z-index: 10;
-  background: var(--deep); color: #fff;
-}
-.site-header .wrap {
-  display: flex; align-items: center; justify-content: space-between;
-  min-height: 64px;
-}
-.logo { font-size: 1.5rem; text-decoration: none; letter-spacing: -0.04em; }
-.logo span { color: var(--orange); text-shadow: -2px 2px 0 var(--gray); }
-.logo img { display: block; width: 58px; height: 54px; object-fit: contain; }
-.menu-btn {
-  background: none; border: 2px solid rgba(255,255,255,.5); color: #fff;
-  border-radius: 8px; padding: 8px 12px; font: inherit; font-size: .95rem; cursor: pointer;
-}
-#nav {
-  display: none;
-  position: absolute; top: 64px; left: 0; right: 0;
-  background: var(--deep); padding: 8px 20px 20px;
-  flex-direction: column; gap: 2px;
-}
-#nav.open { display: flex; }
-#nav a { text-decoration: none; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,.12); }
-#nav a.btn { margin-top: 12px; border: 0; }
-@media (min-width: 860px) {
-  .menu-btn { display: none; }
-  #nav { display: flex; position: static; flex-direction: row; align-items: center; gap: 22px; padding: 0; background: none; }
-  #nav a { padding: 0; border: 0; font-size: .95rem; }
-  #nav a.btn { margin: 0; padding: 10px 20px; }
-}
-
 /* HERO */
 .hero {
   position: relative; overflow: hidden;

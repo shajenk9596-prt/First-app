@@ -8,7 +8,13 @@
 <title>FairPlay Rides | Rides to every practice, game, and tournament</title>
 <meta name="description" content="Safe, affordable rides for youth athletes to practices, games, and tournaments across Memphis. The price you’re quoted is the price you pay.">
 
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="branding.css">
+<link rel="stylesheet" href="about.css">
+<script>document.documentElement.className += " js";</script>
+
 <style>
+
 /* OPTIONAL: use your real Sprite Graffiti font.
    1. Put your font file (for example SpriteGraffiti.woff2) in this same folder.
    2. Copy the block below OUTSIDE this comment and match the file name:
@@ -78,6 +84,28 @@ section { padding: 56px 0; }
 .btn-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
 
 /* HEADER */
+
+<!-- EDIT: every "Book a Ride" button points to #contact for now.
+     WHEN your Jotform is ready: search this file for  href="#contact"  on the
+     Book a Ride buttons and replace it with your Jotform link. -->
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="#top">Fair<span>P</span>lay Rides</a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav id="nav" aria-label="Main">
+      <!-- MENU: each link opens its own page. Keep the same menu on every page you build.
+           EDIT: change a label (the words) or a link (the file name) here. -->
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="about.html">About</a>
+      <a href="fairplay-rides.html">FairPlay Rides</a>
+      <a href="contact.html">Contact</a>
+      <a class="btn btn-orange" href="#contact">Book a Ride</a>
+    </nav>
+  </div>
+</header>
+ 
+<main id="top">
+
 .site-header {
   position: sticky; top: 0; z-index: 10;
   background: var(--deep); color: #fff;
@@ -214,7 +242,6 @@ footer ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: w
   .btn-row .btn { width: 100%; }
 }
 </style>
-<link rel="stylesheet" href="branding.css">
 </head>
 
 <body>

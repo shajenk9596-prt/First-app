@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- EDIT: the title shown on the browser tab -->
+<title>About | FairPlay Rides</title>
+<meta name="description" content="Meet the mom behind FairPlay Rides, safe and affordable rides for young athletes in Memphis.">
+
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="branding.css">
+<!-- Lets the slide-in effects switch on. Leave this line here. -->
+<script>document.documentElement.className += " js";</script>
+</head>
+
+<body>
+<!-- MENU: same menu on every page. Change a label (the words) or a link (the file name) here. -->
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="index.html" aria-label="FairPlay Rides home">
+      <img src="2logo.png" alt="FairPlay Rides" width="2095" height="668">
+    </a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav id="nav" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="about.html" aria-current="page">About</a>
+      <a href="fairplay-rides.html">FairPlay Rides</a>
+      <a href="contact.html">Contact</a>
+      <a class="btn btn-orange" href="contact.html">Book a Ride</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero small">
+  <div class="wrap">
+    <h1>About FairPlay Rides</h1>
+    <p class="sub lead">A mom’s answer to the ride problem every sports family knows.</p>
+  </div>
+</section>
+
+<section class="about jersey">
+  <div class="wrap">
+    <div class="intro">
+      <!-- WHEN your photo is ready: delete the placeholder <div> below and put this line in its place
+           (change the file name if yours differs):
+           <img class="photo" src="photo.jpg" alt="Photo of Shakenya Jenkins, owner of FairPlay Rides"> -->
+      <div class="photo" role="img" aria-label="Placeholder for Shakenya Jenkins photo">SJ</div>
+      <div>
+        <h2 class="reveal">Hi, I’m Shakenya</h2>
+        <p>I’m a mom of three boys, and sports are a big part of our lives. Let me tell you why I started FairPlay Rides.</p>
+        <p class="hint">Tap a heading to open each part of my story.</p>
+      </div>
+    </div>
+
+      <details class="play" open>
+        <summary><span class="t">How it started</span></summary>
+        <div class="play-body">
+          <p class="reveal">Sports have always been how I keep my boys busy and active. Every season we signed up for something new: another team, another program, another nonprofit league. I loved it.</p>
+          <p class="reveal">But the more we signed up for, the harder it got to actually get there. I’m a young mom doing this on a tight budget, and there were times I was <mark class="hl">running low on gas</mark>, or didn’t have the money or the support to get my boys to every practice and game.</p>
+          <blockquote class="pull reveal">Signing your kid up is the easy part. <mark class="hl">Getting them there is where it gets real.</mark></blockquote>
+          <!-- OPTIONAL: add one true moment here, like a game you almost missed, as a new <p class="reveal"> paragraph.
+               A real detail builds more trust than anything else on this page. -->
+        </div>
+      </details>
+      <details class="play">
+        <summary><span class="t">I wasn’t the only one</span></summary>
+        <div class="play-body">
+          <p class="reveal">Once I started paying attention, I realized other parents were dealing with the same thing: juggling work, other kids, and a gas gauge. And coaches and nonprofit organizations were out there working hard to <mark class="hl">give kids a place to play</mark>.</p>
+          <blockquote class="pull reveal">I thought, <mark class="hl">what if getting there didn’t have to be the hard part?</mark></blockquote>
+        </div>
+      </details>
+      <details class="play">
+        <summary><span class="t">So I did something about it</span></summary>
+        <div class="play-body">
+          <p class="reveal">FairPlay Rides gives young athletes <mark class="hl">safe, affordable rides</mark> to practices, games, and tournaments across Memphis. Parents book the rides they need. Coaches and nonprofits can set up rides for their whole team.</p>
+          <blockquote class="pull reveal">The goal is simple: <mark class="hl">no kid misses out because of a ride.</mark></blockquote>
+        </div>
+      </details>
+      <details class="play">
+        <summary><span class="t">A little more about me</span></summary>
+        <div class="play-body">
+          <p class="reveal">Before FairPlay Rides, I spent years in customer service, including handling escalated calls as a consumer advocate. That job taught me to <mark class="hl">listen well and stay calm when plans change</mark>.</p>
+          <blockquote class="pull reveal">Treat people <mark class="hl">the way I’d want to be treated.</mark></blockquote>
+          <p class="reveal">That’s how I run FairPlay Rides, too.</p>
+        </div>
+      </details>
+  </div>
+</section>
+
+<!-- ============ WHAT YOU CAN COUNT ON (flip cards) ============ -->
+<section class="trust jersey">
+  <div class="wrap">
+    <h2 class="reveal">What you can count on</h2>
+    <p class="hint">Tap a card to flip it.</p>
+    <div class="flips">
+      <button type="button" class="flip" aria-pressed="false">
+        <span class="flip-inner">
+          <span class="face front"><span class="flip-title">Fair prices</span><span class="flip-text">Flat fares based on distance. The price I quote you is the price you pay, with no surprises.</span><span class="flip-hint">Tap for more</span></span>
+          <span class="face back"><span class="flip-title">The details</span><span class="flip-text">Fares start at $15 one way. Waiting is free for the first 15 minutes, and you can cancel free up to 2 hours before pickup.</span><span class="flip-hint">Tap to flip back</span></span>
+        </span>
+      </button>
+      <!-- ONLY ADD driver checks, insurance, or backup drivers here once they are actually in place -->
+      <button type="button" class="flip" aria-pressed="false">
+        <span class="flip-inner">
+          <span class="face front"><span class="flip-title">Safe rides</span><span class="flip-text">Every athlete has a parent permission form on file, and I take your child’s safety seriously.</span><span class="flip-hint">Tap for more</span></span>
+          <span class="face back"><span class="flip-title">The details</span><span class="flip-text">Every athlete needs a parent permission form before riding. Younger riders can use booster seats.</span><span class="flip-hint">Tap to flip back</span></span>
+        </span>
+      </button>
+      <button type="button" class="flip" aria-pressed="false">
+        <span class="flip-inner">
+          <span class="face front"><span class="flip-title">Clear communication</span><span class="flip-text">You’ll always know who’s driving, when they’re coming, and when your athlete has arrived.</span><span class="flip-hint">Tap for more</span></span>
+          <span class="face back"><span class="flip-title">How I do it</span><span class="flip-text">I confirm every ride and send you the details, and I’m a call or text away at 901-460-2043.</span><span class="flip-hint">Tap to flip back</span></span>
+        </span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <h2 class="reveal">Let’s get your athlete there</h2>
+    <p>Whether you’re a parent trying to make it to Saturday’s game or a coach looking out for your whole team, I’d love to help.</p>
+    <div class="btn-row">
+      <a class="btn btn-orange" href="contact.html">Book a Ride</a>
+      <a class="btn btn-outline" href="contact.html">Request a Team Quote</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <p><b>FairPlay Rides</b></p>
+      <p>Youth athlete rides, Memphis, TN</p>
+      <!-- EDIT: phone appears twice (tel: link AND visible text); email appears twice (mailto: link AND visible text) -->
+      <p>Call or text: <a href="tel:+19014602043">+1 901-460-2043</a></p>
+      <p>Email: <a href="mailto:shakenyajenkins@gmail.com">shakenyajenkins@gmail.com</a></p>
+      <p>Serving Memphis and nearby areas</p>
+    </div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="fairplay-rides.html">FairPlay Rides</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</footer>
+
+<!-- STICKY BAR (phones) -->
+<div class="bar"><a class="btn btn-orange" href="contact.html">Book a Ride</a></div>
+
+<script src="script.js"></script>
+</body>
+</html>

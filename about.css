@@ -1,0 +1,48 @@
+/* ABOUT.JS: slide-in paragraphs, highlighter sweep, and the moving van */
+(function () {
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* 1. Slide in each piece as it scrolls into view */
+  var items = document.querySelectorAll(".reveal");
+  if ("IntersectionObserver" in window && !reduce) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.15, rootMargin: "0px 0px -8% 0px" });
+    items.forEach(function (el) { io.observe(el); });
+  } else {
+    items.forEach(function (el) { el.classList.add("in"); });
+  }
+
+  /* 2. Move the van down the road and light up each stop it passes */
+  var wrap = document.getElementById("road");
+  if (!wrap) return;
+  var van = wrap.querySelector(".van");
+  var chapters = wrap.querySelectorAll(".chapter");
+  var finish = wrap.querySelector(".finish");
+  var ticking = false;
+
+  function update() {
+    ticking = false;
+    var vh = window.innerHeight;
+    var r = wrap.getBoundingClientRect();
+    var mark = vh * 0.55;                     /* the van sits about halfway down the screen */
+    var progress = Math.min(1, Math.max(0, (mark - r.top) / r.height));
+    if (van && !reduce) {
+      /* the van parks just above the finish flag */
+      var far = finish ? finish.offsetTop - van.offsetHeight - 6 : r.height - van.offsetHeight;
+      van.style.top = progress * far + "px";
+    }
+    if (finish) { finish.classList.toggle("reached", progress > 0.96); }
+    chapters.forEach(function (c) {
+      c.classList.toggle("reached", c.getBoundingClientRect().top < mark);
+    });
+  }
+  function onScroll() {
+    if (!ticking) { ticking = true; window.requestAnimationFrame(update); }
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll);
+  update();
+})();

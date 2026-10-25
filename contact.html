@@ -3,16 +3,24 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <!-- EDIT: the title shown on the browser tab -->
 <title>Contact | FairPlay Rides</title>
 <meta name="description" content="Book a ride, ask a question, or request a team quote from FairPlay Rides in Memphis.">
+
 <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="branding.css">
+<!-- Lets the slide-in effects switch on. Leave this line here. -->
+<script>document.documentElement.className += " js";</script>
 </head>
+
 <body>
 <!-- MENU: same menu on every page. Change a label (the words) or a link (the file name) here. -->
 <header class="site-header">
   <div class="wrap">
-    <a class="logo" href="index.html">Fair<span>P</span>lay Rides</a>
+    <a class="logo" href="index.html" aria-label="FairPlay Rides home">
+      <img src="2logo.png" alt="FairPlay Rides" width="2095" height="668">
+    </a>
     <button class="menu-btn" aria-expanded="false" aria-controls="nav">Menu</button>
     <nav id="nav" aria-label="Main">
       <a href="index.html">Home</a>
@@ -25,6 +33,7 @@
 </header>
 
 <main>
+
 <section class="hero small">
   <div class="wrap">
     <h1>Get in touch</h1>

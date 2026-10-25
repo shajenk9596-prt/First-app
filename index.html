@@ -10,185 +10,19 @@
 
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="branding.css">
-<link rel="stylesheet" href="about.css">
+<!-- Lets the slide-in effects switch on. Leave this line here. -->
 <script>document.documentElement.className += " js";</script>
-
-<style>
-
-/* COLORS: change a color once here and it updates everywhere */
-:root {
-  --blue: #434d57;      /* gray blue: main color */
-  --deep: #2f373f;      /* darker gray blue: dark sections */
-  --orange: #e98d31;    /* Game Day Orange: accents and buttons */
-  --gray: #90969a;      /* gray: secondary text */
-  --page: #e6e6e6;      /* light gray page background */
-  --card: #fefaf2;      /* light orange cream sections */
-  --ink: #1f262d;       /* text on orange buttons */
-}
-
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 76px; }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-
-body {
-  margin: 0;
-  background: var(--page);
-  color: var(--blue);
-  font-family: "Trebuchet MS", Verdana, sans-serif;
-  font-size: 1.05rem;
-  line-height: 1.6;
-}
-
-/* Headings use Sprite Graffiti if you added it, otherwise a bold fallback */
-h1, h2, h3, .logo {
-  font-family: "Trebuchet MS", Verdana, sans-serif;
-  letter-spacing: -0.02em;
-  line-height: 1.15;
-  margin: 0;
-}
-h2 { font-size: clamp(1.6rem, 4.5vw, 2.3rem); margin-bottom: 14px; }
-h3 { font-size: 1.15rem; margin-bottom: 4px; }
-p { margin: 0 0 14px; max-width: 62ch; }
-a { color: inherit; }
-a:focus-visible, button:focus-visible, summary:focus-visible {
-  outline: 3px solid var(--orange);
-  outline-offset: 3px;
-}
-
-.wrap { max-width: 980px; margin: 0 auto; padding: 0 20px; }
-section { padding: 56px 0; }
-
-/* BUTTONS */
-.btn {
-  display: inline-block;
-  padding: 15px 28px;
-  border-radius: 999px;
-  font-weight: bold;
-  font-size: 1rem;
-  text-decoration: none;
-  text-align: center;
-}
-.btn-orange { background: var(--orange); color: var(--ink); }
-.btn-outline { border: 2px solid currentColor; }
-.btn-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
-
-/* HERO */
-.hero {
-  position: relative; overflow: hidden;
-  background: linear-gradient(135deg, var(--blue) 0%, var(--deep) 100%);
-  color: #fff;
-  padding: 64px 0 112px;
-}
-.hero:after {
-  content: ""; position: absolute; left: -10%; right: -10%; bottom: 0;
-  height: 40px; background: var(--orange);
-  transform: skewY(-2deg); transform-origin: left bottom;
-}
-.hero h1 { font-size: clamp(2.2rem, 8vw, 4rem); max-width: 13em; margin-bottom: 18px; }
-.hero .sub { font-size: 1.15rem; max-width: 34em; margin-bottom: 26px; }
-.hero .help { font-size: .95rem; margin: 18px 0 0; }
-
-/* TRUST STRIP */
-.trust { background: var(--card); padding: 32px 0; }
-.trust .wrap { display: grid; gap: 22px; }
-.trust p { margin: 0; font-size: .97rem; }
-@media (min-width: 760px) {
-  .trust .wrap { grid-template-columns: repeat(3, 1fr); gap: 0; }
-  .trust .wrap > div { padding: 0 24px; border-left: 3px solid var(--orange); }
-  .trust .wrap > div:first-child { padding-left: 0; border-left: 0; }
-}
-
-/* HOW IT WORKS */
-.steps { list-style: none; padding: 0; margin: 22px 0 30px; display: grid; gap: 16px; counter-reset: s; }
-.steps li { counter-increment: s; padding-left: 52px; position: relative; }
-.steps li:before {
-  content: counter(s);
-  position: absolute; left: 0; top: 0;
-  width: 38px; height: 38px; border-radius: 50%;
-  background: var(--blue); color: #fff; font-weight: bold;
-  display: flex; align-items: center; justify-content: center;
-}
-.steps b { display: block; }
-@media (min-width: 760px) { .steps { grid-template-columns: repeat(3, 1fr); gap: 28px; } }
-.serve { border-left: 5px solid var(--orange); padding-left: 18px; }
-
-/* FARE BOARD (pricing) */
-.fares { background: var(--deep); color: #fff; }
-.fares h2 { color: #fff; }
-.board { overflow-x: auto; margin: 22px 0 10px; }
-table { width: 100%; min-width: 560px; border-collapse: collapse; }
-th, td { text-align: left; padding: 14px 12px; border-bottom: 1px solid rgba(255,255,255,.18); }
-th { font-weight: normal; color: #c9ced2; font-size: .9rem; }
-td.price { color: var(--orange); font-size: 1.5rem; font-family: "Sprite Graffiti", "Trebuchet MS", Verdana, sans-serif; }
-.fares ul { padding-left: 20px; margin: 18px 0; max-width: 62ch; }
-.fares li { margin-bottom: 6px; }
-.example { background: rgba(255,255,255,.08); border-radius: 12px; padding: 14px 18px; max-width: 62ch; }
-
-/* SAFETY */
-.safety { background: var(--card); }
-.checks { list-style: none; padding: 0; margin: 18px 0 24px; display: grid; gap: 10px; max-width: 62ch; }
-.checks li { padding-left: 34px; position: relative; }
-.checks li:before {
-  content: ""; position: absolute; left: 4px; top: .35em;
-  width: 8px; height: 15px; border: solid var(--orange); border-width: 0 4px 4px 0;
-  transform: rotate(40deg);
-}
-
-/* TEAMS AND SPONSORS */
-.teams { background: var(--blue); color: #fff; }
-.teams h2 { color: #fff; }
-
-/* ABOUT */
-.about .wrap { display: grid; gap: 26px; align-items: center; }
-.photo {
-  width: 160px; height: 160px; border-radius: 50%; object-fit: cover;
-  border: 5px solid var(--orange); display: flex; align-items: center; justify-content: center;
-  background: var(--gray); color: #fff; font-size: 2.6rem; font-weight: bold; letter-spacing: 2px;
-}
-.promise { font-weight: bold; }
-@media (min-width: 760px) { .about .wrap { grid-template-columns: 180px 1fr; gap: 40px; } }
-
-/* FAQ */
-.faq { background: var(--card); }
-details { border-bottom: 1px solid #ddd2bd; padding: 14px 0; max-width: 70ch; }
-summary { cursor: pointer; font-weight: bold; }
-details p { margin: 10px 0 0; }
-
-/* FINAL CALL TO ACTION AND FOOTER */
-.final { background: var(--orange); color: var(--ink); text-align: center; }
-.final p { margin: 0 auto 18px; }
-.final .btn-row { justify-content: center; }
-.final .btn-orange { background: var(--ink); color: #fff; }
-.final .btn-outline { color: var(--ink); }
-footer { background: var(--deep); color: #dfe3e6; padding: 36px 0 90px; font-size: .95rem; }
-footer .wrap { display: grid; gap: 22px; }
-footer p { margin: 0 0 4px; }
-footer ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 8px 18px; }
-@media (min-width: 760px) { footer .wrap { grid-template-columns: 1.4fr 1fr; } footer { padding-bottom: 36px; } }
-
-/* STICKY "BOOK A RIDE" BAR (phones only) */
-.bar { display: none; }
-@media (max-width: 759px) {
-  .bar {
-    display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 9;
-    background: var(--deep); padding: 12px 16px calc(12px + env(safe-area-inset-bottom, 0px));
-  }
-  .bar a { display: block; }
-  .btn-row .btn { width: 100%; }
-}
-</style>
 </head>
 
 <body>
-
 <!-- ============ HEADER ============ -->
-<!-- EDIT: every "Book a Ride" button points to #contact for now.
+<!-- EDIT: every "Book a Ride" button points to #contact (your call-or-text info in the footer) for now.
      WHEN your Jotform is ready: search this file for  href="#contact"  on the
      Book a Ride buttons and replace it with your Jotform link. -->
 <header class="site-header">
   <div class="wrap">
     <a class="logo" href="#top" aria-label="FairPlay Rides home">
-      <img src="" alt="FairPlay Rides">
+      <img src="2logo.png" alt="FairPlay Rides" width="2095" height="668">
     </a>
     <button class="menu-btn" aria-expanded="false" aria-controls="nav">Menu</button>
     <nav id="nav" aria-label="Main">
@@ -220,34 +54,67 @@ footer ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: w
   </div>
 </section>
 
-<!-- ============ TRUST POINTS ============ -->
-<div class="trust">
+<!-- ============ WHAT YOU CAN COUNT ON (flip cards) ============ -->
+<section class="trust">
   <div class="wrap">
-    <div>
-      <h3>Final price, no surprises</h3>
-      <p>The fare we quote when you book is what you pay.</p>
-    </div>
-    <div>
-      <h3>15 free minutes of waiting</h3>
-      <p>Practice ran long? The first 15 minutes are on us.</p>
-    </div>
-    <div>
-      <!-- ONLY KEEP this point once backup drivers and roadside help are in place -->
-      <h3>A backup plan for every ride</h3>
-      <p>Backup drivers and roadside help mean no team gets stranded.</p>
+    <h2 class="reveal">What you can count on</h2>
+    <p class="hint">Tap a card to flip it.</p>
+    <div class="flips">
+      <button type="button" class="flip" aria-pressed="false">
+        <span class="flip-inner">
+          <span class="face front"><span class="flip-title">Final price, no surprises</span><span class="flip-text">The fare we quote when you book is what you pay.</span><span class="flip-hint">Tap for more</span></span>
+          <span class="face back"><span class="flip-title">Flat fares by distance</span><span class="flip-text">Fares start at $15 one way. Siblings are a small add-on, and teams of 3 or more get a lower per-athlete rate.</span><span class="flip-hint">Tap to flip back</span></span>
+        </span>
+      </button>
+      <button type="button" class="flip" aria-pressed="false">
+        <span class="flip-inner">
+          <span class="face front"><span class="flip-title">15 free minutes of waiting</span><span class="flip-text">Practice ran long? The first 15 minutes are on us.</span><span class="flip-hint">Tap for more</span></span>
+          <span class="face back"><span class="flip-title">After the free time</span><span class="flip-text">Waiting after the first 15 minutes is $6 per 15 minutes, so you always know what a late practice costs.</span><span class="flip-hint">Tap to flip back</span></span>
+        </span>
+      </button>
+      <!-- ONLY KEEP the next card once backup drivers and roadside help are in place -->
+      <button type="button" class="flip" aria-pressed="false">
+        <span class="flip-inner">
+          <span class="face front"><span class="flip-title">A backup plan for every ride</span><span class="flip-text">Backup drivers and roadside help mean no team gets stranded.</span><span class="flip-hint">Tap for more</span></span>
+          <span class="face back"><span class="flip-title">If plans fall through</span><span class="flip-text">If something still goes wrong, you get a refund or credit.</span><span class="flip-hint">Tap to flip back</span></span>
+        </span>
+      </button>
     </div>
   </div>
-</div>
+</section>
 
-<!-- ============ HOW IT WORKS ============ -->
-<section id="how">
+<!-- ============ HOW IT WORKS (the road) ============ -->
+<section class="jersey" id="how">
   <div class="wrap">
-    <h2>Getting there takes three steps</h2>
-    <ol class="steps">
-      <li><b>Book</b>Tell us the athlete, pickup and drop-off, and the date and time.</li>
-      <li><b>Get confirmed</b>We confirm your ride and send you the details.</li>
-      <li><b>Ride</b>Your athlete gets to practice or the game, and you know they arrived.</li>
-    </ol>
+    <h2 class="reveal">Getting there takes three steps</h2>
+    <div class="road-wrap">
+      <div class="road-line" aria-hidden="true"></div>
+      <div class="van" aria-hidden="true"><svg viewBox="0 0 26 48" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="9" width="3" height="9" rx="1.5" fill="#2f373f"/><rect x="20" y="9" width="3" height="9" rx="1.5" fill="#2f373f"/><rect x="3" y="31" width="3" height="9" rx="1.5" fill="#2f373f"/><rect x="20" y="31" width="3" height="9" rx="1.5" fill="#2f373f"/><rect x="4.5" y="2" width="17" height="44" rx="7" fill="#434d57" stroke="#e6e6e6" stroke-width="1.5"/><rect x="7.5" y="32" width="11" height="8" rx="2" fill="#fefaf2"/><rect x="7.5" y="8" width="11" height="5" rx="1.5" fill="#fefaf2" opacity=".8"/><rect x="11.5" y="16" width="3" height="13" rx="1.5" fill="#e98d31"/></svg></div>
+
+      <article class="chapter">
+        <span class="stop" aria-hidden="true"></span>
+        <h3 class="reveal">Book</h3>
+        <p class="reveal">Tell us the athlete, pickup and drop-off, and the date and time.</p>
+      </article>
+
+      <article class="chapter">
+        <span class="stop" aria-hidden="true"></span>
+        <h3 class="reveal">Get confirmed</h3>
+        <p class="reveal">We confirm your ride and send you the details.</p>
+      </article>
+
+      <article class="chapter">
+        <span class="stop" aria-hidden="true"></span>
+        <h3 class="reveal">Ride</h3>
+        <p class="reveal">Your athlete gets to practice or the game, and you know they arrived.</p>
+      </article>
+
+      <!-- FINISH LINE. EDIT the words below to change the message at the end of the road. -->
+      <div class="finish">
+        <span class="flag" aria-hidden="true"></span>
+        <p class="finish-text reveal">Game on. Your athlete has arrived.</p>
+      </div>
+    </div>
     <div class="serve">
       <h3>Built around game-day schedules</h3>
       <p>We drive athletes to youth rec leagues (football, basketball, soccer), school and travel teams, weekend tournaments, and training sessions. Evenings and weekends are our focus, because that’s when your athlete needs to be somewhere.</p>
@@ -255,10 +122,9 @@ footer ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: w
   </div>
 </section>
 
-<!-- ============ PRICING ============ -->
-<section class="fares" id="pricing">
+<section class="fares jersey" id="pricing">
   <div class="wrap">
-    <h2>Simple flat fares, by distance</h2>
+    <h2 class="reveal">Simple flat fares, by distance</h2>
     <p>One-way prices. Rides start at $15.</p>
     <div class="board">
       <table>
@@ -279,12 +145,11 @@ footer ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: w
   </div>
 </section>
 
-<!-- ============ SAFETY AND TRUST ============ -->
 <!-- IMPORTANT: only keep each line below once it is actually in place at launch.
      Your car insurance for paid rides and driver checks must be done first. -->
-<section class="safety" id="safety">
+<section class="safety jersey" id="safety">
   <div class="wrap">
-    <h2>Your athlete’s safety comes first</h2>
+    <h2 class="reveal">Your athlete’s safety comes first</h2>
     <ul class="checks">
       <li>Background and driving-record checks for every driver</li>
       <li>Insurance for paid rides</li>
@@ -294,70 +159,61 @@ footer ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: w
   </div>
 </section>
 
-<!-- ============ TEAMS AND SPONSORS ============ -->
-<section class="teams" id="teams">
+<section class="teams jersey" id="teams">
   <div class="wrap">
-    <h2>Don’t let cost keep a kid home</h2>
+    <h2 class="reveal">Don’t let cost keep a kid home</h2>
     <p>Coaches, leagues, and sponsors can prepay rides so every athlete on the roster can show up. Choose team carpool rates for practices and games, or book an event-day charter for tournaments.</p>
     <div class="btn-row">
-      <!-- EDIT: replace #contact with your Request a Quote form link when ready -->
+      <!-- EDIT: replace this link with your Request a Quote form when ready -->
       <a class="btn btn-orange" href="#contact">Request a Quote</a>
     </div>
   </div>
 </section>
 
-<!-- ============ ABOUT ============ -->
-<main>
-<section class="about" id="about">
-  <div class="wrap story-wrap">
-
+<!-- ============ ABOUT (tap-to-open story) ============ -->
+<section class="about jersey" id="about">
+  <div class="wrap">
     <div class="intro">
+      <!-- WHEN your photo is ready: delete the placeholder <div> below and put this line in its place
+           (change the file name if yours differs):
+           <img class="photo" src="photo.jpg" alt="Photo of Shakenya Jenkins, owner of FairPlay Rides"> -->
       <div class="photo" role="img" aria-label="Placeholder for Shakenya Jenkins photo">SJ</div>
       <div>
-        <h2>Hi, I’m Shakenya</h2>
-        <p class="dropcap">I’m a mom of three boys, and sports are a big part of our lives. Here’s why I started FairPlay Rides.</p>
+        <h2 class="reveal">Hi, I’m Shakenya</h2>
+        <p>I’m a mom of three boys, and sports are a big part of our lives. Here’s why I started FairPlay Rides.</p>
+        <p class="hint">Tap a heading to open each part of my story.</p>
       </div>
     </div>
 
-    <div class="road-wrap" id="road">
-      <div class="road-line" aria-hidden="true"></div>
-      <div class="van" aria-hidden="true"><svg viewBox="0 0 26 48" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="9" width="3" height="9" rx="1.5" fill="#2f373f"/><rect x="20" y="9" width="3" height="9" rx="1.5" fill="#2f373f"/><rect x="3" y="31" width="3" height="9" rx="1.5" fill="#2f373f"/><rect x="20" y="31" width="3" height="9" rx="1.5" fill="#2f373f"/><rect x="4.5" y="2" width="17" height="44" rx="7" fill="#434d57" stroke="#fefaf2" stroke-width="1.5"/><rect x="7.5" y="32" width="11" height="8" rx="2" fill="#fefaf2"/><rect x="7.5" y="8" width="11" height="5" rx="1.5" fill="#fefaf2" opacity=".8"/><rect x="11.5" y="16" width="3" height="13" rx="1.5" fill="#e98d31"/></svg></div>
-
-      <article class="chapter">
-        <span class="stop" aria-hidden="true"></span>
-        <h3 class="reveal">How it started</h3>
-        <p class="dropcap reveal">Sports have always kept my boys busy and active. But the more teams and nonprofit programs we signed up for, the harder it got to actually get there. I’m a young mom on a tight budget, and there were times I was running low on gas.</p>
-        <blockquote class="pull reveal">Signing your kid up is the easy part. <mark>Getting them there is where it gets real.</mark></blockquote>
-      </article>
-
-      <article class="chapter">
-        <span class="stop" aria-hidden="true"></span>
-        <h3 class="reveal">I wasn’t the only one</h3>
-        <p class="reveal">Other parents were dealing with the same thing, and coaches and nonprofits were working hard to give kids a place to play.</p>
-        <blockquote class="pull reveal">I thought, <mark>what if getting there didn’t have to be the hard part?</mark></blockquote>
-      </article>
-
-      <article class="chapter">
-        <span class="stop" aria-hidden="true"></span>
-        <h3 class="reveal">So I did something about it</h3>
-        <p class="reveal">FairPlay Rides gives young athletes safe, affordable rides to practices, games, and tournaments across Memphis.</p>
-        <blockquote class="pull reveal">The goal is simple: <mark>no kid misses out because of a ride.</mark></blockquote>
-        <p class="reveal"><b>My promise:</b> you’ll always know who’s driving, when they’re coming, and when your athlete arrives.</p>
-        <p class="reveal"><a class="btn btn-outline" href="about.html" style="color:var(--blue)">Read my full story</a></p>
-      </article>
-
-      <div class="finish">
-        <span class="flag" aria-hidden="true"></span>
-        <p class="finish-text reveal">Game day. Every kid in the game.</p>
-      </div>
-    </div>
+      <details class="play" open>
+        <summary><span class="t">How it started</span></summary>
+        <div class="play-body">
+          <p class="reveal">Sports have always kept my boys busy and active. But the more teams and nonprofit programs we signed up for, the harder it got to actually get there. I’m a young mom on a tight budget, and there were times I was <mark class="hl">running low on gas</mark>.</p>
+          <blockquote class="pull reveal">Signing your kid up is the easy part. <mark class="hl">Getting them there is where it gets real.</mark></blockquote>
+        </div>
+      </details>
+      <details class="play">
+        <summary><span class="t">I wasn’t the only one</span></summary>
+        <div class="play-body">
+          <p class="reveal">Other parents were dealing with the same thing, and coaches and nonprofits were working hard to <mark class="hl">give kids a place to play</mark>.</p>
+          <blockquote class="pull reveal">I thought, <mark class="hl">what if getting there didn’t have to be the hard part?</mark></blockquote>
+        </div>
+      </details>
+      <details class="play">
+        <summary><span class="t">So I did something about it</span></summary>
+        <div class="play-body">
+          <p class="reveal">FairPlay Rides gives young athletes <mark class="hl">safe, affordable rides</mark> to practices, games, and tournaments across Memphis.</p>
+          <blockquote class="pull reveal">The goal is simple: <mark class="hl">no kid misses out because of a ride.</mark></blockquote>
+          <p class="reveal"><b>My promise:</b> you’ll always know who’s driving, when they’re coming, and when your athlete arrives.</p>
+          <p class="reveal"><a class="btn btn-outline" href="about.html">Read my full story</a></p>
+        </div>
+      </details>
   </div>
 </section>
 
-<!-- ============ FAQ ============ -->
-<section class="faq" id="faq">
+<section class="faq jersey" id="faq">
   <div class="wrap">
-    <h2>Quick answers</h2>
+    <h2 class="reveal">Quick answers</h2>
     <details>
       <summary>What if you’re late, or practice runs over?</summary>
       <p>We’ll keep you updated. Waiting time is free for the first 15 minutes, then $6 per 15 minutes.</p>
@@ -368,7 +224,7 @@ footer ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: w
     </details>
     <details>
       <summary>Can siblings or a whole team ride together?</summary>
-      <p>Yes. Siblings 6 & up are a small add-on, and teams of 3 or more get a lower per-athlete rate.</p>
+      <p>Yes. Siblings 6 &amp; up are a small add-on, and teams of 3 or more get a lower per-athlete rate.</p>
     </details>
     <details>
       <summary>What ages do you drive?</summary>
@@ -377,10 +233,9 @@ footer ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: w
   </div>
 </section>
 
-<!-- ============ FINAL CALL TO ACTION ============ -->
 <section class="final">
   <div class="wrap">
-    <h2>Ready for game day?</h2>
+    <h2 class="reveal">Ready for game day?</h2>
     <p>Book your first ride in a couple of minutes.</p>
     <div class="btn-row">
       <a class="btn btn-orange" href="#contact">Book a Ride</a>
@@ -416,20 +271,6 @@ footer ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: w
 <!-- STICKY BAR (phones) -->
 <div class="bar"><a class="btn btn-orange" href="#contact">Book a Ride</a></div>
 
-<script>
-/* Opens and closes the menu on phones */
-var btn = document.querySelector(".menu-btn");
-var nav = document.getElementById("nav");
-btn.addEventListener("click", function () {
-  var open = nav.classList.toggle("open");
-  btn.setAttribute("aria-expanded", open);
-});
-nav.addEventListener("click", function (e) {
-  if (e.target.tagName === "A") {
-    nav.classList.remove("open");
-    btn.setAttribute("aria-expanded", "false");
-  }
-});
-</script>
+<script src="script.js"></script>
 </body>
 </html>
